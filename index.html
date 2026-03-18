@@ -858,37 +858,139 @@ FCIU5496399"
   }
 </script>
 
-<!-- PWA Install Banner (shown only when installable) -->
-<div id="pwa-banner" style="
-  display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000;
-  background:#1e2433; border-top:1px solid #2a3044;
-  padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px)) 20px;
-  display:none; align-items:center; gap:12px;
-  font-family:'Noto Sans SC',-apple-system,sans-serif;
+<!-- ── iOS INSTALL GUIDE BANNER ── -->
+<div id="ios-banner" style="
+  display:none;
+  position:fixed; bottom:0; left:0; right:0; z-index:1000;
+  background:#161a23;
+  border-top:2px solid #4fffb0;
+  padding:16px 18px calc(16px + env(safe-area-inset-bottom,0px)) 18px;
+  font-family:-apple-system,'Noto Sans SC',sans-serif;
+  box-shadow:0 -8px 32px rgba(0,0,0,0.6);
+">
+  <!-- Close -->
+  <button onclick="document.getElementById('ios-banner').style.display='none'" style="
+    position:absolute;top:10px;right:14px;
+    background:none;border:none;color:#6b7599;font-size:22px;
+    cursor:pointer;line-height:1;padding:4px;
+  ">×</button>
+
+  <!-- Title -->
+  <div style="font-size:14px;font-weight:700;color:#4fffb0;margin-bottom:12px;letter-spacing:0.03em;">
+    📲 安装到主屏幕 / Add to Home Screen
+  </div>
+
+  <!-- Step by step -->
+  <div style="display:flex;flex-direction:column;gap:10px;">
+
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="
+        width:28px;height:28px;border-radius:50%;
+        background:#4fffb0;color:#000;
+        font-weight:700;font-size:13px;
+        display:flex;align-items:center;justify-content:center;
+        flex-shrink:0;
+      ">1</div>
+      <div style="font-size:13px;color:#e8eaf2;">
+        点底部工具栏的
+        <span style="
+          display:inline-flex;align-items:center;gap:3px;
+          background:#2a3044;border-radius:5px;
+          padding:2px 8px;font-size:12px;color:#4fffb0;
+          white-space:nowrap;
+        ">
+          <!-- Share icon SVG -->
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4fffb0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          分享
+        </span>
+        按钮
+        <span style="color:#6b7599;font-size:11px;">（Safari 底部中间）</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="
+        width:28px;height:28px;border-radius:50%;
+        background:#4fffb0;color:#000;
+        font-weight:700;font-size:13px;
+        display:flex;align-items:center;justify-content:center;
+        flex-shrink:0;
+      ">2</div>
+      <div style="font-size:13px;color:#e8eaf2;">
+        向下滑找到
+        <span style="
+          background:#2a3044;border-radius:5px;
+          padding:2px 8px;font-size:12px;color:#ffd93d;
+        ">➕ 添加到主屏幕</span>
+        并点击
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="
+        width:28px;height:28px;border-radius:50%;
+        background:#4fffb0;color:#000;
+        font-weight:700;font-size:13px;
+        display:flex;align-items:center;justify-content:center;
+        flex-shrink:0;
+      ">3</div>
+      <div style="font-size:13px;color:#e8eaf2;">
+        右上角点
+        <span style="
+          background:#2a3044;border-radius:5px;
+          padding:2px 8px;font-size:12px;color:#4fffb0;
+        ">添加</span>
+        — 完成！图标会出现在主屏幕 🎉
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Android / Desktop install prompt ── -->
+<div id="android-banner" style="
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:1000;
+  background:#1e2433;border-top:1px solid #2a3044;
+  padding:14px 20px;display:none;align-items:center;gap:12px;
+  font-family:-apple-system,sans-serif;
 ">
   <div style="flex:1;">
-    <div style="font-size:13px;font-weight:600;color:#e8eaf2;">添加到主屏幕 / Add to Home Screen</div>
-    <div style="font-size:11px;color:#6b7599;margin-top:2px;">像 App 一样使用，完全离线 / Works offline like a native app</div>
+    <div style="font-size:13px;font-weight:600;color:#e8eaf2;">安装为 App / Install App</div>
+    <div style="font-size:11px;color:#6b7599;margin-top:2px;">离线使用，添加到主屏幕 / Works offline</div>
   </div>
   <button onclick="installPWA()" style="
     background:#4fffb0;color:#000;border:none;border-radius:7px;
-    padding:9px 16px;font-size:12px;font-weight:700;cursor:pointer;
-    font-family:monospace;white-space:nowrap;
+    padding:9px 18px;font-size:12px;font-weight:700;cursor:pointer;
   ">安装 Install</button>
-  <button onclick="dismissBanner()" style="
-    background:transparent;border:none;color:#6b7599;font-size:20px;
-    cursor:pointer;padding:4px;line-height:1;
+  <button onclick="document.getElementById('android-banner').style.display='none'" style="
+    background:transparent;border:none;color:#6b7599;font-size:22px;cursor:pointer;
   ">×</button>
 </div>
 
 <script>
-  // ── PWA INSTALL PROMPT (Android Chrome / desktop) ──
-  let deferredPrompt = null;
+  // ── DETECT PLATFORM ──
+  const _ua = navigator.userAgent;
+  const _isIosSafari = /iPhone|iPad|iPod/.test(_ua)
+                    && !_ua.includes('CriOS')       // not Chrome on iOS
+                    && !_ua.includes('FxiOS')       // not Firefox on iOS
+                    && !window.navigator.standalone; // not already installed
 
+  // Show iOS guide banner
+  if (_isIosSafari) {
+    document.getElementById('ios-banner').style.display = 'block';
+  }
+
+  // ── Android / Desktop install prompt ──
+  let deferredPrompt = null;
   window.addEventListener('beforeinstallprompt', e => {
     e.preventDefault();
     deferredPrompt = e;
-    document.getElementById('pwa-banner').style.display = 'flex';
+    document.getElementById('android-banner').style.display = 'flex';
   });
 
   function installPWA() {
@@ -896,24 +998,8 @@ FCIU5496399"
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(() => {
       deferredPrompt = null;
-      dismissBanner();
+      document.getElementById('android-banner').style.display = 'none';
     });
-  }
-
-  function dismissBanner() {
-    document.getElementById('pwa-banner').style.display = 'none';
-  }
-
-  // iOS: show a manual guide banner since iOS doesn't support beforeinstallprompt
-  const isIosBrowser = /iPhone|iPad|iPod/.test(navigator.userAgent) &&
-                       !navigator.userAgent.includes('CriOS') &&
-                       !window.navigator.standalone;
-  if (isIosBrowser) {
-    const iosBanner = document.getElementById('pwa-banner');
-    iosBanner.style.display = 'flex';
-    iosBanner.querySelector('div > div:first-child').textContent = '📲 添加到主屏幕 Add to Home Screen';
-    iosBanner.querySelector('div > div:last-child').textContent = '点 Safari 分享按钮 → "添加到主屏幕" / Tap Share → "Add to Home Screen"';
-    iosBanner.querySelector('button:first-of-type').style.display = 'none'; // hide install btn
   }
 </script>
 </body>
