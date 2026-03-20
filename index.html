@@ -509,7 +509,7 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <span class="topbar-title">⟨ TEXT CLEANER ⟩</span>
+  <span class="topbar-title">⟨ TEXT CLEANER ⟩ <span style="font-size:9px;opacity:0.4;letter-spacing:0.06em;margin-left:4px;">v1.2.0</span></span>
   <span class="topbar-sub">
     <span class="topbar-sub-long">删除空行 Remove Blanks &nbsp;·&nbsp; 项目去重 Deduplicate &nbsp;·&nbsp;</span>
     一键复制 Copy
@@ -529,12 +529,12 @@
     <input type="checkbox" id="opt-dedup" checked>
     <span>✦ 项目去重 <em>Deduplicate</em></span>
   </label>
-  <label class="toggle-group" id="lbl-trim">
-    <input type="checkbox" id="opt-trim">
+  <label class="toggle-group active" id="lbl-trim">
+    <input type="checkbox" id="opt-trim" checked>
     <span>✂ 修剪空格 <em>Trim Spaces</em></span>
   </label>
-  <label class="toggle-group" id="lbl-upper">
-    <input type="checkbox" id="opt-upper">
+  <label class="toggle-group active" id="lbl-upper">
+    <input type="checkbox" id="opt-upper" checked>
     <span>Aa 转大写 <em>Uppercase</em></span>
   </label>
   <label class="toggle-group" id="lbl-lower">
@@ -555,8 +555,10 @@
 
 例如 e.g.:
 FCIU5496399
+OOLU0950130
 
-FTAU1903897"
+FTAU1903897
+FCIU5496399"
       autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
     <div class="panel-footer">
       <span class="stat-item">行 Lines: <b id="in-lines">0</b></span>
